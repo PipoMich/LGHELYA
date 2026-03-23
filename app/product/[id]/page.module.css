@@ -1,0 +1,386 @@
+/* ─────────────────────────────────────────────
+   Product Detail Page
+   ───────────────────────────────────────────── */
+
+.main {
+  padding-top: var(--nav-h);
+  background: var(--cream);
+  min-height: 100vh;
+}
+
+/* ── Breadcrumb ── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem clamp(1.5rem, 5vw, 4rem);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #888;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.breadcrumb a { color: var(--brand-orange); transition: opacity 0.2s; }
+.breadcrumb a:hover { opacity: 0.7; }
+.breadcrumb span:last-child { color: var(--brand-black); font-weight: 700; }
+
+/* ── Product grid ── */
+.product {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: 0;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem) 6rem;
+  align-items: start;
+}
+
+/* ── Gallery ── */
+.gallery { position: sticky; top: calc(var(--nav-h) + 2rem); }
+
+.mainImgWrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 120%;
+  background: var(--off-white);
+  overflow: hidden;
+}
+
+.mainImg {
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+.mainImgWrap:hover .mainImg { transform: scale(1.04); }
+
+.tag {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: var(--brand-orange);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  z-index: 2;
+}
+
+/* ── Info panel ── */
+.info {
+  padding: 0 0 0 clamp(2rem, 4vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 0.95;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: var(--brand-black);
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--brand-orange);
+  letter-spacing: 1px;
+}
+
+.desc {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.9;
+  color: #444;
+  max-width: 440px;
+}
+
+/* ── Option groups ── */
+.optionGroup { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.optionLabel {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--brand-black);
+  transition: color 0.3s;
+}
+.optionLabel span { color: var(--brand-orange); }
+.optionError { color: #e53e3e !important; }
+
+/* Color swatches */
+.colors { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.colorSwatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  outline: 2px solid transparent;
+  transition: outline 0.2s, transform 0.2s;
+  cursor: none;
+}
+.colorSwatch:hover { transform: scale(1.15); }
+.colorActive {
+  outline: 2px solid var(--brand-orange);
+  outline-offset: 3px;
+}
+
+/* Size buttons */
+.sizes { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.sizeBtn {
+  min-width: 52px;
+  height: 44px;
+  padding: 0 12px;
+  border: 2px solid #ccc;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: none;
+  transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.15s;
+}
+.sizeBtn:hover { border-color: var(--brand-black); transform: translateY(-2px); }
+.sizeActive {
+  border-color: var(--brand-black);
+  background: var(--brand-black);
+  color: var(--white);
+}
+.sizeError { border-color: #e53e3e !important; animation: shake 0.4s ease; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-4px); }
+  60%       { transform: translateX(4px); }
+}
+
+/* ── CTA row ── */
+.ctaRow {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+  width: 100%;
+}
+
+.qtyControl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid var(--brand-black);
+  height: 56px;
+  flex: 1; /* Occupies 1/3 of the line */
+}
+.qtyControl button {
+  width: 44px;
+  height: 100%;
+  font-size: 1.2rem;
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  cursor: none;
+}
+.qtyControl button:hover { background: var(--brand-black); color: var(--white); }
+.qtyControl span {
+  flex: 1; /* Take up center space */
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.waBtn {
+  flex: 2; /* Occupies exactly 2/3 of the line */
+  height: 56px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: transparent;
+  color: var(--brand-black);
+  border: 2px solid var(--brand-black);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.waBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--brand-black);
+  width: 0;
+  z-index: -1;
+  transition: width 0.35s var(--ease);
+}
+.waBtn:hover { color: var(--white); transform: translateY(-2px); }
+.waBtn:hover::before { width: 100%; }
+
+@keyframes cart-pulse {
+  0%, 100% { transform: scale(1) translateY(-2px); }
+  50%       { transform: scale(0.96) translateY(0); }
+}
+.pulse { animation: cart-pulse 0.35s var(--ease); }
+
+.waNote {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  color: #888;
+  line-height: 1.7;
+  border-left: 3px solid #25D366;
+  padding-left: 0.75rem;
+}
+
+/* ── Product details accordion ── */
+.details {
+  border-top: 2px solid var(--brand-black);
+  border-bottom: 2px solid var(--brand-black);
+  padding: 0;
+}
+.detailsSummary {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 1.1rem 0;
+  cursor: none;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.detailsSummary::after {
+  content: '+';
+  font-size: 1.3rem;
+  transition: transform 0.3s;
+}
+details[open] .detailsSummary::after { transform: rotate(45deg); }
+
+.detailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0 1.25rem;
+}
+.detailsList li {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: #555;
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.7;
+}
+.detailsList li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--brand-orange);
+}
+
+/* ── Related products ── */
+.related {
+  background: var(--off-white);
+  padding: 6rem clamp(1.5rem, 5vw, 4rem);
+}
+
+.relatedTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.relatedCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: none;
+}
+
+.relatedImgWrap {
+  position: relative;
+  padding-bottom: 115%;
+  background: var(--dark-cream);
+  overflow: hidden;
+}
+.relatedImg {
+  object-fit: cover;
+  transition: transform 0.55s var(--ease);
+}
+.relatedCard:hover .relatedImg { transform: scale(1.05); }
+
+.relatedTag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--brand-black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+}
+
+.relatedName {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding-top: 0.25rem;
+}
+.relatedPrice {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--brand-orange);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .product {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .gallery { position: static; }
+  .info { padding: 0; }
+  .mainImgWrap { padding-bottom: 95%; }
+}
+
+@media (max-width: 600px) {
+  .relatedGrid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+}

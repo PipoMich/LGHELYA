@@ -1,0 +1,173 @@
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--brand-black);
+  transition: box-shadow 0.3s;
+}
+.header.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.35); }
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  height: 72px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+/* Logo */
+.logo {
+  font-family: var(--ff-display, 'Anton', sans-serif);
+  font-size: 1.75rem;
+  color: var(--white);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Nav links */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.link {
+  font-family: var(--ff-body, 'Space Mono', monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+  position: relative;
+  padding-bottom: 4px;
+}
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--brand-orange);
+  transition: width 0.3s var(--ease);
+}
+.link:hover::after { width: 100%; }
+
+/* Actions */
+.actions { display: flex; align-items: center; gap: 1rem; }
+
+.iconBtn {
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  transition: color 0.2s;
+}
+.iconBtn:hover { color: var(--brand-orange); }
+
+/* WhatsApp button */
+.waBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s;
+}
+.waBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--white);
+  width: 0;
+  z-index: -1;
+  transition: width 0.35s var(--ease);
+}
+.waBtn:hover { color: var(--brand-black); }
+.waBtn:hover::before { width: 100%; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+}
+.hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease), opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .nav {
+    position: relative;
+    height: 60px; /* Slimmer navbar on mobile */
+    padding: 0 1rem; /* Reduced horizontal padding to save space */
+  }
+  
+  .hamburger {
+    display: flex;
+    order: -1; /* Move hamburger to the very left edge */
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Perfectly center the logo */
+    font-size: 1.4rem; /* Scaled down slightly for mobile */
+  }
+
+  .waBtn {
+    padding: 6px 12px; /* Tighter dimensions for the button */
+    font-size: 0.6rem;
+    gap: 0.3rem;
+  }
+
+  .links {
+    position: fixed;
+    top: 60px; /* Matches new navbar height */
+    left: 0; 
+    bottom: 0;
+    width: 250px;
+    background: var(--brand-black);
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 2rem 0;
+    transform: translateX(-100%); /* Hidden off-screen to the left */
+    transition: transform 0.4s var(--ease);
+  }
+  .links.linksOpen {
+    transform: translateX(0); /* Slide in */
+  }
+  .link { 
+    font-size: 0.9rem; 
+    padding: 1.2rem 2rem; 
+    border-bottom: 1px solid rgba(255,255,255,0.07); 
+    display: block;
+    width: 100%;
+  }
+  .link::after { display: none; }
+}

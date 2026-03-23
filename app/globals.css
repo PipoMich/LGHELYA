@@ -1,0 +1,227 @@
+/* ─────────────────────────────────────────────
+   IDWEAR — Global Design System
+   ───────────────────────────────────────────── */
+
+/* ---------- Tokens ---------- */
+:root {
+  --brand-black:  #0A0A0A;
+  --brand-orange: #F97316;
+  --cream:        #FEF3E2;
+  --dark-cream:   #F0E6D3;
+  --off-white:    #F5F0E8;
+  --white:        #FFFFFF;
+
+  --font-display: 'Anton', sans-serif;
+  --font-body:    'Space Mono', monospace;
+
+  --nav-h: 72px;
+  --max-w: 1200px;
+  --ease:  cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
+
+html { scroll-behavior: smooth; cursor: none; overflow-x: hidden; width: 100%; }
+
+body {
+  background: var(--cream);
+  color: var(--brand-black);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; cursor: none; }
+a   { text-decoration: none; color: inherit; cursor: none; }
+button { cursor: none; border: none; background: none; font-family: inherit; }
+ul, ol { list-style: none; }
+
+/* ---------- Custom Cursor ---------- */
+#cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 10px; height: 10px;
+  background: var(--brand-orange);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s var(--ease), height 0.2s var(--ease);
+}
+#cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 40px; height: 40px;
+  border: 2px solid var(--brand-orange);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s var(--ease), width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.3s;
+  opacity: 0.6;
+}
+body.cursor-hover #cursor-dot  { width: 14px; height: 14px; }
+body.cursor-hover #cursor-ring { width: 60px; height: 60px; opacity: 0.4; }
+
+/* ---------- Section Reveal ---------- */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+
+/* ---------- Shared Buttons ---------- */
+.btn-primary {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  padding: 14px 36px;
+  background: var(--brand-black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  z-index: 1;
+  transition: color 0.3s;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--brand-orange);
+  width: 0;
+  z-index: -1;
+  transition: width 0.35s var(--ease);
+}
+.btn-primary:hover::before { width: 100%; }
+
+.btn-outline {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  padding: 14px 36px;
+  border: 2px solid var(--brand-black);
+  background: transparent;
+  color: var(--brand-black);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  z-index: 1;
+  transition: color 0.3s;
+}
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--brand-black);
+  width: 0;
+  z-index: -1;
+  transition: width 0.35s var(--ease);
+}
+.btn-outline:hover { color: var(--white); }
+.btn-outline:hover::before { width: 100%; }
+
+.btn-outline-sm {
+  display: inline-block;
+  padding: 10px 24px;
+  border: 2px solid var(--brand-black);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s;
+}
+.btn-outline-sm::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--brand-black);
+  width: 0;
+  z-index: -1;
+  transition: width 0.35s var(--ease);
+}
+.btn-outline-sm:hover { color: var(--white); }
+.btn-outline-sm:hover::before { width: 100%; }
+
+/* ---------- Section Label ---------- */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--brand-orange);
+  margin-bottom: 1rem;
+}
+
+/* ---------- Orange underline bar ---------- */
+.orange-bar {
+  height: 5px;
+  width: 80px;
+  background: var(--brand-orange);
+  margin-top: 8px;
+}
+
+/* ---------- Animations ---------- */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes spin-badge {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes orb-pulse {
+  0%, 100% { opacity: 0.18; transform: scale(1); }
+  50%       { opacity: 0.28; transform: scale(1.12); }
+}
+
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* ---------- Responsive Max Width Helper ---------- */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+/* ---------- Floating WhatsApp Button ---------- */
+.wa-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9000;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(37,211,102,.45);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s;
+  animation: wa-bounce 2.5s ease-in-out infinite;
+}
+.wa-float:hover {
+  transform: scale(1.12);
+  box-shadow: 0 10px 36px rgba(37,211,102,.6);
+  animation: none;
+}
+
+@keyframes wa-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}

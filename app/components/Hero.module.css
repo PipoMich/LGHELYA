@@ -1,0 +1,165 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: calc(var(--nav-h)) 0 6rem clamp(1.5rem, 5vw, 4rem);
+  overflow: hidden;
+}
+
+/* Animated orb */
+.orb {
+  position: absolute;
+  top: -20%;
+  left: -15%;
+  width: 700px;
+  height: 700px;
+  background: conic-gradient(
+    from 0deg,
+    #F97316 0deg,
+    #FEF3E2 90deg,
+    #F0E6D3 180deg,
+    #F97316 360deg
+  );
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.22;
+  animation: orb-pulse 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.sub {
+  font-family: var(--ff-body, 'Space Mono', monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 1.5rem;
+}
+:global(.splash-complete) .sub {
+  animation: slideUp 0.9s 0.1s var(--ease) both;
+}
+
+.headline {
+  font-family: var(--ff-display, 'Anton', sans-serif);
+  font-size: clamp(4rem, 12vw, 10rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+  color: var(--brand-black);
+  margin-bottom: 2.5rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  min-width: 0;
+  max-width: 100%;
+}
+:global(.splash-complete) .headline {
+  animation: slideUp 0.9s 0.25s var(--ease) both;
+}
+
+.cta {
+  display: inline-flex;
+}
+:global(.splash-complete) .cta {
+  animation: slideUp 0.9s 0.45s var(--ease) both;
+}
+
+/* Hero model image */
+.heroImg {
+  position: relative;
+  height: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+}
+.heroImgInner { object-fit: cover; object-position: top center; }
+.heroImgFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--cream) 0%, transparent 30%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  right: clamp(2rem, 5vw, 5rem);
+  bottom: clamp(6rem, 16vw, 15rem);
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: hero-float 4s 1s ease-in-out infinite;
+  z-index: 10;
+}
+
+.badgeSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: spin-badge 10s linear infinite;
+}
+
+.badgeArrow {
+  position: relative;
+  z-index: 2;
+  width: 52px;
+  height: 52px;
+  background: var(--brand-black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, transform 0.25s var(--ease);
+}
+.badgeArrow:hover { background: var(--brand-orange); transform: scale(1.12); }
+
+/* Slide-up keyframe for hero children */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin-badge {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes hero-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+/* Responsive */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; padding-right: clamp(1.5rem, 5vw, 4rem); }
+  .heroImg { display: none; }
+  .badge {
+    right: 1.5rem;
+    bottom: 2rem;
+    width: 120px;
+    height: 120px;
+  }
+  .badgeSvg { font-size: 9px; }
+  .badgeArrow { width: 40px; height: 40px; }
+}

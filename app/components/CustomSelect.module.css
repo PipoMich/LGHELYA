@@ -1,0 +1,76 @@
+.container {
+  position: relative;
+  font-family: var(--font-body, 'Space Mono', monospace);
+}
+
+.trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: transparent;
+  border: 2px solid var(--brand-black);
+  cursor: none;
+  font-size: 0.82rem;
+  color: var(--brand-black);
+  transition: all 0.2s var(--ease);
+  outline: none;
+  gap: 1.5rem;
+}
+
+.trigger:focus-visible {
+  box-shadow: 0 0 0 2px var(--brand-orange);
+}
+
+.trigger:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+.trigger.open .chevron {
+  transform: rotate(180deg);
+}
+
+.placeholder {
+  color: rgba(10,10,10,0.6);
+}
+
+.value {
+  color: var(--brand-black);
+}
+
+.chevron {
+  transition: transform 0.3s var(--ease);
+}
+
+.optionsList {
+  position: absolute;
+  top: calc(100% - 2px);
+  left: 0;
+  width: 100%;
+  background: var(--off-white);
+  border: 2px solid var(--brand-black);
+  z-index: 50;
+  max-height: 250px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.option {
+  padding: 12px 16px;
+  font-size: 0.82rem;
+  color: var(--brand-black);
+  cursor: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.option:hover {
+  background: var(--brand-orange);
+  color: var(--white);
+}
+
+.option.selected {
+  background: var(--brand-black);
+  color: var(--white);
+}

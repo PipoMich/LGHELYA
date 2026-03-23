@@ -1,0 +1,94 @@
+.splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--brand-black, #0A0A0A);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  overflow: hidden;
+}
+
+.canvasWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; /* Let clicks pass through if needed, although splash catches it */
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  padding-bottom: 5rem;
+  pointer-events: none;
+}
+
+.brandTitle {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--white, #FFFFFF);
+  margin: 0 0 2rem 0;
+  text-transform: uppercase;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.progressWrap {
+  width: 280px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--brand-orange, #F97316);
+  box-shadow: 0 0 10px var(--brand-orange, #F97316);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: loadProgress 9.8s linear forwards;
+}
+
+@keyframes loadProgress {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+.loadingTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.loadingText {
+  font-family: var(--font-body, monospace);
+  font-size: 0.75rem;
+  color: var(--white, #FFFFFF);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.skipText {
+  font-family: var(--font-body, monospace);
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}

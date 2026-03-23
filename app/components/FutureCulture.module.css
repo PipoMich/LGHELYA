@@ -1,0 +1,100 @@
+.section {
+  background: var(--off-white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  padding: 8rem clamp(1.5rem, 5vw, 4rem);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Text column */
+.textCol { display: flex; flex-direction: column; gap: 1.5rem; max-width: var(--max-w); }
+
+.headline {
+  font-family: var(--ff-display, 'Anton', sans-serif);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--brand-black);
+}
+
+.accent { color: var(--brand-orange); }
+
+/* Squiggle underline */
+.squiggle {
+  width: 100px;
+  height: 8px;
+  background: var(--brand-orange);
+  clip-path: polygon(
+    0% 50%, 5% 0%, 10% 50%, 15% 100%, 20% 50%,
+    25% 0%, 30% 50%, 35% 100%, 40% 50%, 45% 0%,
+    50% 50%, 55% 100%, 60% 50%, 65% 0%, 70% 50%,
+    75% 100%, 80% 50%, 85% 0%, 90% 50%, 95% 100%,
+    100% 50%
+  );
+}
+
+.body {
+  font-family: var(--ff-body, 'Space Mono', monospace);
+  font-size: 0.82rem;
+  line-height: 1.9;
+  color: rgba(10,10,10,0.7);
+  max-width: 480px;
+}
+
+/* Photos column */
+.photosCol {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  height: 600px;
+  align-items: stretch;
+}
+
+.photo {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background: var(--dark-cream);
+  border: 2px solid var(--brand-black);
+  box-shadow: 6px 6px 0 var(--brand-black);
+  transition: transform 0.3s var(--ease);
+}
+
+.photo:hover {
+  transform: translateY(-4px);
+}
+
+.photo1 {
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+.photo2 {
+  margin-bottom: 4rem;
+  margin-top: 1rem;
+}
+
+.img { object-fit: cover; object-position: center; }
+
+
+/* Responsive */
+.mobileCTA {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .section { grid-template-columns: 1fr; gap: 4rem; }
+  .photosCol { height: 420px; gap: 1rem; }
+  .photo1 { margin-top: 2rem; margin-bottom: 0; }
+  .photo2 { margin-bottom: 2rem; margin-top: 0; }
+  .desktopCTA { display: none !important; }
+  .mobileCTA {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
