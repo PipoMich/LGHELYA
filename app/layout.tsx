@@ -21,6 +21,12 @@ export const metadata: Metadata = {
   title: 'LGHELYA — Show the world who you truly are',
   description:
     'LGHELYA is a bold, street-culture fashion brand. Empowerment begins with wearing what expresses who you are inside. Shop the 2024 Winter/Spring Collection.',
+  formatDetection: {
+    telephone: false,
+    date: false,
+    email: false,
+    address: false,
+  },
   openGraph: {
     title: 'LGHELYA — Show the world who you truly are',
     description: 'Bold street-culture fashion. Shop new arrivals, jackets, and urban wear.',

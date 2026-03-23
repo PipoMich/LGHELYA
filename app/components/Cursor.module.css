@@ -25,3 +25,9 @@
 
 :global(body.cursor-hover) .dot  { width: 14px; height: 14px; }
 :global(body.cursor-hover) .ring { width: 64px; height: 64px; opacity: 0.35; }
+
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+  .dot, .ring {
+    display: none !important;
+  }
+}

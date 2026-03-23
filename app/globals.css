@@ -20,9 +20,14 @@
 }
 
 /* ---------- Reset ---------- */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
 
-html { scroll-behavior: smooth; cursor: none; overflow-x: hidden; width: 100%; }
+html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 
 body {
   background: var(--cream);
@@ -32,10 +37,19 @@ body {
   overflow-x: hidden;
 }
 
-img { display: block; max-width: 100%; cursor: none; }
-a   { text-decoration: none; color: inherit; cursor: none; }
-button { cursor: none; border: none; background: none; font-family: inherit; }
+img { display: block; max-width: 100%; }
+a, button, input, select, textarea {
+  -webkit-appearance: none;
+  appearance: none;
+}
+a { text-decoration: none; color: inherit; }
+button { border: none; background: none; font-family: inherit; }
 ul, ol { list-style: none; }
+
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after { cursor: none !important; }
+  html, img, a, button { cursor: none !important; }
+}
 
 /* ---------- Custom Cursor ---------- */
 #cursor-dot {
@@ -127,6 +141,8 @@ body.cursor-hover #cursor-ring { width: 60px; height: 60px; opacity: 0.4; }
   display: inline-block;
   padding: 10px 24px;
   border: 2px solid var(--brand-black);
+  background: transparent;
+  color: var(--brand-black);
   font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 700;
