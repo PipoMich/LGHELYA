@@ -102,7 +102,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
             {/* Size picker */}
             <div className={styles.optionGroup}>
-              <p className={`${styles.optionLabel} ${sizeError ? styles.optionError : ''}`}>
+              <p className={`${styles.optionLabel} ${sizeError ? styles.optionError : ''}`} aria-live="polite">
                 SIZE {!selectedSize && '— SELECT A SIZE'}
               </p>
               <div className={styles.sizes}>
@@ -124,7 +124,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             <div className={styles.ctaRow}>
               <div className={styles.qtyControl}>
                 <button onClick={() => setQty(q => Math.max(1, q - 1))} aria-label="Decrease quantity">−</button>
-                <span>{qty}</span>
+                <span aria-live="polite">{qty}</span>
                 <button onClick={() => setQty(q => q + 1)} aria-label="Increase quantity">+</button>
               </div>
               <button

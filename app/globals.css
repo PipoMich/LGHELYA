@@ -46,9 +46,33 @@ a { text-decoration: none; color: inherit; }
 button { border: none; background: none; font-family: inherit; }
 ul, ol { list-style: none; }
 
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--brand-orange);
+  color: var(--white);
+  padding: 1rem 2rem;
+  z-index: 10000;
+  transition: top 0.3s;
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 @media (hover: hover) and (pointer: fine) {
   *, *::before, *::after { cursor: none !important; }
   html, img, a, button { cursor: none !important; }
+}
+
+/* Ensure focus visibility for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--brand-orange) !important;
+  outline-offset: 4px;
+  cursor: auto !important;
 }
 
 /* ---------- Custom Cursor ---------- */

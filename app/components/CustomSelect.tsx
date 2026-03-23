@@ -49,10 +49,17 @@ export default function CustomSelect({
         className={`${styles.trigger} ${isOpen ? styles.open : ''}`}
         onClick={(e) => { e.preventDefault(); setIsOpen(!isOpen) }}
         tabIndex={0}
+        role="combobox"
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-controls={id ? `${id}-listbox` : undefined}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault()
             setIsOpen(!isOpen)
+          }
+          if (e.key === 'Escape' && isOpen) {
+            setIsOpen(false)
           }
         }}
       >
@@ -69,10 +76,12 @@ export default function CustomSelect({
       </div>
 
       {isOpen && (
-        <ul className={styles.optionsList}>
+        <ul className={styles.optionsList} role="listbox" id={id ? `${id}-listbox` : undefined}>
           {placeholder && (
             <li 
               className={`${styles.option} ${!value ? styles.selected : ''}`}
+              role="option"
+              aria-selected={!value}
               onClick={() => {
                 onChange('')
                 setIsOpen(false)
@@ -85,6 +94,8 @@ export default function CustomSelect({
             <li
               key={option.value}
               className={`${styles.option} ${value === option.value ? styles.selected : ''}`}
+              role="option"
+              aria-selected={value === option.value}
               onClick={() => {
                 onChange(option.value)
                 setIsOpen(false)

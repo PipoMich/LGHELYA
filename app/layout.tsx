@@ -42,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${anton.variable} ${spaceMono.variable}`}>
       <body>
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <Cursor />
         <SplashScreen />
         {children}
