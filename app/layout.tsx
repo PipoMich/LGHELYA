@@ -32,6 +32,24 @@ export const metadata: Metadata = {
     title: 'LGHELYA — Show the world who you truly are',
     description: 'Bold street-culture fashion. Shop new arrivals, jackets, and urban wear.',
     type: 'website',
+    images: [
+      {
+        url: 'https://lghelya.com/icon.png',
+        width: 1200,
+        height: 630,
+        alt: 'LGHELYA Storefront'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'LGHELYA — Street Culture Fashion',
+    description: 'Empowerment begins with wearing what expresses who you are inside.',
+    images: ['https://lghelya.com/icon.png'],
+  },
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
   },
   alternates: {
     canonical: 'https://lghelya.com',

@@ -42,10 +42,11 @@ export default function CustomSelect({
   }, [])
 
   return (
-    <div className={`${styles.container} ${className}`} ref={containerRef} id={id}>
+    <div className={`${styles.container} ${className}`} ref={containerRef}>
       <input type="hidden" value={value} required={required} />
       
       <div 
+        id={id}
         className={`${styles.trigger} ${isOpen ? styles.open : ''}`}
         onClick={(e) => { e.preventDefault(); setIsOpen(!isOpen) }}
         tabIndex={0}
