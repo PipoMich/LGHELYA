@@ -191,6 +191,7 @@
   align-items: center;
   justify-content: center;
   transition: background 0.2s, color 0.2s;
+  color: var(--brand-black);
   cursor: none;
 }
 .qtyControl button:hover { background: var(--brand-black); color: var(--white); }

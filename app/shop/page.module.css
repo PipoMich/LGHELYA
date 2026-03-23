@@ -60,6 +60,7 @@
   padding: 8px 20px;
   border: 2px solid #ccc;
   background: transparent;
+  color: var(--brand-black);
   font-family: var(--font-body);
   font-size: 0.68rem;
   font-weight: 700;
