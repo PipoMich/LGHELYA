@@ -32,13 +32,13 @@ export default function Hero() {
       </div>
 
       {/* Right — hero model image */}
-      <div className={styles.heroImg} aria-hidden="true">
+      <div className={styles.heroImg}>
         <Image
           src="/img/hero_model_1.png"
           alt="Model wearing LGHELYA street jacket"
           fill
           priority
-          sizes="(max-width: 768px) 0px, 55vw"
+          sizes="(max-width: 900px) 0vw, 50vw"
           className={styles.heroImgInner}
         />
         {/* Gradient fade on left edge to blend into cream */}
@@ -80,7 +80,7 @@ export default function Hero() {
               <textPath href="#bc">NEW REALEASE ✦ NEW REALEASE ✦</textPath>
             </text>
           </svg>
-          <button
+          <div
             className={styles.badgeArrow}
             aria-label="View Black Friday Offers"
           >
@@ -98,7 +98,7 @@ export default function Hero() {
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
-          </button>
+          </div>
         </div>
       </Link>
     </section>

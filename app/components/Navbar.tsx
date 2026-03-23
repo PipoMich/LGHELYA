@@ -19,12 +19,12 @@ export default function Navbar() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`} role="banner">
       <nav className={styles.nav} aria-label="Main navigation">
         {/* Logo */}
-        <a href="/" className={styles.logo} aria-label="IDWEAR home" onClick={() => {
+        <Link href="/" className={styles.logo} aria-label="LGHELYA home" onClick={() => {
           sessionStorage.removeItem('splash_shown')
           setMenuOpen(false)
         }}>
           LGHELYA
-        </a>
+        </Link>
 
         {/* Hamburger */}
         <button

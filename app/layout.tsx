@@ -18,6 +18,7 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://lghelya.com'),
   title: 'LGHELYA — Show the world who you truly are',
   description:
     'LGHELYA is a bold, street-culture fashion brand. Empowerment begins with wearing what expresses who you are inside. Shop the 2024 Winter/Spring Collection.',
@@ -35,11 +36,13 @@ export const metadata: Metadata = {
 }
 
 import SplashScreen from './components/SplashScreen'
+import Cursor from './components/Cursor'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${anton.variable} ${spaceMono.variable}`}>
       <body>
+        <Cursor />
         <SplashScreen />
         {children}
         {/* Floating WhatsApp button — visible on every page */}

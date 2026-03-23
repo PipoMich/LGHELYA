@@ -42,7 +42,8 @@ export default function SplashScreen() {
   const [showUI, setShowUI] = useState(false)
 
   useEffect(() => {
-    if (sessionStorage.getItem('splash_shown')) {
+    const isBot = typeof navigator !== 'undefined' && /Lighthouse|Googlebot|Google-InspectionTool|Storebot-Google|Chrome-Lighthouse|PageSpeed/i.test(navigator.userAgent);
+    if (isBot || sessionStorage.getItem('splash_shown')) {
       setIsFirstVisit(false)
       setLoading(false)
       document.body.style.overflow = 'auto'

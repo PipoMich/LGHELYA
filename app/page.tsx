@@ -1,4 +1,3 @@
-import Cursor           from './components/Cursor'
 import Navbar           from './components/Navbar'
 import Hero             from './components/Hero'
 import Ticker           from './components/Ticker'
@@ -14,7 +13,6 @@ export default function Home() {
   return (
     <>
       {/* Interactive client utilities */}
-      <Cursor />
       <ScrollReveal />
 
       {/* A — Navigation */}
