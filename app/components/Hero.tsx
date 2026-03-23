@@ -38,7 +38,7 @@ export default function Hero() {
           alt="Model wearing LGHELYA street jacket"
           fill
           priority
-          sizes="(max-width: 900px) 0vw, 50vw"
+          sizes="(max-width: 900px) 100vw, 50vw"
           className={styles.heroImgInner}
         />
         {/* Gradient fade on left edge to blend into cream */}
@@ -58,12 +58,13 @@ export default function Hero() {
           }
         }}
       >
-        <div className={styles.badge} aria-label="Black Friday Offers">
+        <div className={styles.badge} aria-label="New Release — Scroll to products">
           <svg
             className={styles.badgeSvg}
             viewBox="0 0 160 160"
-            aria-hidden="true"
+            role="img"
           >
+            <title>Rotating Badge: New Release Arrivals</title>
             <defs>
               <path
                 id="bc"

@@ -33,6 +33,9 @@ export const metadata: Metadata = {
     description: 'Bold street-culture fashion. Shop new arrivals, jackets, and urban wear.',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://lghelya.com',
+  },
 }
 
 import SplashScreen from './components/SplashScreen'
@@ -41,6 +44,25 @@ import Cursor from './components/Cursor'
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${anton.variable} ${spaceMono.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'LGHELYA',
+              url: 'https://lghelya.com',
+              logo: 'https://lghelya.com/icon.png',
+              sameAs: [
+                'https://instagram.com/the.lghelya',
+                'https://x.com/lghelya',
+                'https://tiktok.com/@lghelya0'
+              ]
+            })
+          }}
+        />
+      </head>
       <body>
         <a href="#main-content" className="skip-link">Skip to content</a>
         <Cursor />

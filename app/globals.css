@@ -6,6 +6,7 @@
 :root {
   --brand-black:  #0A0A0A;
   --brand-orange: #F97316;
+  --brand-orange-text: #E85D04; /* Darker variant for contrast on light backgrounds */
   --cream:        #FEF3E2;
   --dark-cream:   #F0E6D3;
   --off-white:    #F5F0E8;
@@ -196,7 +197,7 @@ body.cursor-hover #cursor-ring { width: 60px; height: 60px; opacity: 0.4; }
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--brand-orange);
+  color: var(--brand-orange-text);
   margin-bottom: 1rem;
 }
 
@@ -235,6 +236,15 @@ body.cursor-hover #cursor-ring { width: 60px; height: 60px; opacity: 0.4; }
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+@media (max-width: 600px) {
+  .btn-primary, .btn-outline {
+    padding: 16px 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 /* ---------- Floating WhatsApp Button ---------- */

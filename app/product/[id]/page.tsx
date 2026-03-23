@@ -41,9 +41,32 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
       qty,
     })
   }
+  
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    image: `https://lghelya.com${product.src}`,
+    description: product.description,
+    brand: {
+      '@type': 'Brand',
+      name: 'LGHELYA'
+    },
+    offers: {
+      '@type': 'Offer',
+      url: `https://lghelya.com/product/${product.id}`,
+      priceCurrency: 'USD',
+      price: product.price,
+      availability: product.tag === 'SOLD' ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock'
+    }
+  }
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Cursor />
       <Navbar />
 

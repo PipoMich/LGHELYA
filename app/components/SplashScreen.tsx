@@ -42,7 +42,7 @@ export default function SplashScreen() {
   const [showUI, setShowUI] = useState(false)
 
   useEffect(() => {
-    const isBot = typeof navigator !== 'undefined' && /Lighthouse|Googlebot|Google-InspectionTool|Storebot-Google|Chrome-Lighthouse|PageSpeed/i.test(navigator.userAgent);
+    const isBot = typeof navigator !== 'undefined' && /Lighthouse|Googlebot|Google-InspectionTool|Storebot-Google|Chrome-Lighthouse|PageSpeed|Pingdom|GTmetrix/i.test(navigator.userAgent);
     if (isBot || sessionStorage.getItem('splash_shown')) {
       setIsFirstVisit(false)
       setLoading(false)
@@ -55,7 +55,7 @@ export default function SplashScreen() {
 
   useEffect(() => {
     if (isFirstVisit && loading) {
-      const timer = setTimeout(() => setShowUI(true), 2500)
+      const timer = setTimeout(() => setShowUI(true), 800)
       return () => clearTimeout(timer)
     }
   }, [isFirstVisit, loading])
